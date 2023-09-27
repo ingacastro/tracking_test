@@ -41,6 +41,16 @@ $(document).ready(function() {
         });
     });
 
+    $('#fecha_creacion').datepicker({
+        format: 'yyyy-mm-dd',
+        orientation: "auto left",
+        forceParse: false,
+        autoclose: true,
+        todayHighlight: true,
+        toggleActive: true,
+        endDate: '0',
+    });
+
 });
 
 function buscarFechaCreacion(){

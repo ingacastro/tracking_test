@@ -57,15 +57,35 @@ $num_total_rows = $row['total_packs'];
                 if ($result->num_rows > 0) {
                     echo '<ul class="row items">';
                     while ($row = $result->fetch_assoc()) {
-                        echo '<li class="col-lg-3">';
-                        echo '<div class="item">';
-                        echo $row['image'] != null ? '<h5><img src="https://multitrack.trackingpremium.us/packimages/'.$row['image'].'" width="50%" height="50%"><h5>Trck: '.$row['tracking'].'</h5>' : '<h5>Trck: '.$row['tracking'].'</h5>';
-                        echo '<h5>Date: '.$row['creationdate'].'</h5>';
-                        echo '<h5>pack: '.$row['npack'].'</h5>';
-                        echo '<h5>type: '.$row['packtype'].'</h5>';
-                        echo '<h5>w: '.$row['weight'].'</h5>';
-                        echo '</div>';
-                        echo '</li>';
+                        ?>
+                        <li class="col-lg-3">
+                            <div class="item">
+                                <div class="row">
+                                    <?=$row['image'] != null ? '<div class="col-lg-6"><h5><img src="https://multitrack.trackingpremium.us/packimages/'.$row['image'].'" width="80%" height="80%"></div><div class="col-lg-6"><h5>Trck: '.$row['tracking'].'</h5></div>' : '<div class="col-lg-3"><h5>Trck: '.$row['tracking'].'</h5></div>';?>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h5>Date: <?=$row['creationdate']?></h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h5>Pack: <?=$row['npack']?></h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h5>Type: <?=$row['packtype']?></h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h5>Weight: <?=$row['weight']?></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <?php
                     }
                     echo '</ul>';
                 }
@@ -83,7 +103,9 @@ $num_total_rows = $row['total_packs'];
                             $class_active = 'active';
                         }
                         
-                        echo '<li class="page-item '.$class_active.'"><a class="page-link" href="#" data="'.$i.'">'.$i.'</a></li>';
+                        echo '<li class="page-item '.$class_active.'">';
+                        echo '<a class="page-link" href="#" data="'.$i.'">'.$i.'</a>';
+                        echo '</li>';
                     }
 
                     echo '</ul>';
@@ -92,6 +114,16 @@ $num_total_rows = $row['total_packs'];
                     echo '</div>';
                 }
 
+                /********************** */
+                ?>                
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                    </ul>
+                </nav>
+
+                <?php
+                /*********************** */
+                
                 echo '<div class="row">';
                     echo '<div class="col-lg-4">';
                     echo '<label>Fecha de creación</label>';
@@ -105,12 +137,12 @@ $num_total_rows = $row['total_packs'];
                     echo '<input type="button" id="buscar" value="buscar" />';
                     echo '</div>';
                 echo '</div>';
-
             }
             ?>
         </div>
     </div>
 </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 </body>
 </html>
